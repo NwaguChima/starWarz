@@ -4,7 +4,7 @@ export async function getMovies() {
   try {
     const { data } = await axios.get("https://swapi.dev/api/films");
 
-    return data;
+    return data.results;
   } catch (error: any) {
     return error;
   }

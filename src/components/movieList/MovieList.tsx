@@ -9,21 +9,28 @@ interface MovieListProps {}
 const MovieList: React.FC<MovieListProps> = () => {
   const [movies, setMovies] = useState<IMovies[] | []>([]);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function movieList() {
       try {
         const movieData = await getMovies();
         // console.log(movieData);
-        setMovies(movieData.results);
+        setLoading(false);
+        setMovies(movieData);
       } catch (error: any) {
+        setLoading(false);
         setError(error.message);
       }
     }
     movieList();
   }, []);
 
-  console.log("xxx", movies);
+  console.log("xxx", error);
+
+  if (error) {
+    return <div className={styles.error}>{error}</div>;
+  }
 
   return (
     <>
