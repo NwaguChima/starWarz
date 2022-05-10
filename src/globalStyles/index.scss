@@ -1,0 +1,72 @@
+@use "./variables.scss" as varr;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+
+  @media screen and (max-width: 1200px) {
+    font-size: 55%;
+  }
+
+  @media screen and (max-width: 1100px) {
+    font-size: 50%;
+  }
+
+  @media screen and (max-width: 1000px) {
+    font-size: 58%;
+  }
+
+  @media screen and (max-width: 900px) {
+    font-size: 48%;
+  }
+
+  @media screen and (max-width: 450px) {
+    font-size: 35%;
+  }
+}
+
+body {
+  font-family: varr.$app-font, sans-serif;
+  line-height: 1;
+  font-weight: 400;
+  color: varr.$text_color;
+  background-color: varr.$main__backg;
+  font-size: varr.$main_font;
+}
+
+.right__list {
+  list-style: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-decoration: none;
+  line-height: 1.5;
+  padding: varr.$padding_links;
+  width: 100%;
+  border-top: 0.5px solid rgba(153, 153, 153, 0.123);
+  border-bottom: 0.1px solid rgba(153, 153, 153, 0.123);
+}
+
+.right__list:hover,
+.right__list:active {
+  background-color: varr.$white_bg;
+  color: varr.$main_blue;
+}
+
+a {
+  text-decoration: none;
+  color: #555;
+  font-weight: 400;
+}
+
+li {
+  list-style: none;
+}
