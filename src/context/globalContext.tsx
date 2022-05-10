@@ -5,8 +5,8 @@ type GlobalContextProviderProps = {
 };
 
 type GlobalContextType = {
-  state: boolean;
-  setState: React.Dispatch<React.SetStateAction<boolean>>;
+  dropDown: boolean;
+  setDropDown: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const GlobalContext = createContext<GlobalContextType | null>(null);
@@ -14,10 +14,10 @@ const GlobalContext = createContext<GlobalContextType | null>(null);
 export const GlobalContextProvider = ({
   children,
 }: GlobalContextProviderProps) => {
-  const [state, setState] = useState<boolean>(false);
+  const [dropDown, setDropDown] = useState<boolean>(false);
 
   return (
-    <GlobalContext.Provider value={{ state, setState }}>
+    <GlobalContext.Provider value={{ dropDown, setDropDown }}>
       {children}
     </GlobalContext.Provider>
   );

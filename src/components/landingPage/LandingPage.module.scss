@@ -1,0 +1,62 @@
+@use "../../globalStyles/variables.scss" as varr;
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  &__figure {
+    img {
+      width: 100%;
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 30rem;
+    background-color: varr.$main__yellow;
+    bottom: 0;
+    overflow: hidden;
+    border-radius: varr.$border_radius_main;
+    -webkit-border-radius: varr.$border_radius_main;
+    -moz-border-radius: varr.$border_radius_main;
+    -ms-border-radius: varr.$border_radius_main;
+    -o-border-radius: varr.$border_radius_main;
+
+    transition: varr.$transition;
+    -webkit-transition: varr.$transition;
+    -moz-transition: varr.$transition;
+    -ms-transition: varr.$transition;
+    -o-transition: varr.$transition;
+
+    button {
+      color: varr.$main__backg;
+      background-color: inherit;
+      border: none;
+      width: 80%;
+      font-size: 1.8rem;
+      padding: 1.4rem;
+    }
+
+    i {
+      color: varr.$main__backg;
+    }
+
+    &:hover,
+    &:active {
+      background-color: varr.$secondary__yellow;
+
+      i {
+        transform: scale(1.2);
+        -webkit-transform: scale(1.2);
+        -moz-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        -o-transform: scale(1.2);
+      }
+    }
+  }
+}
