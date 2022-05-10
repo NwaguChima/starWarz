@@ -12,7 +12,7 @@ const LandingPage: React.FC<LandingPageProps> = () => {
   const handleDropDown = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
 
-    dropContext?.setDropDown(true);
+    dropContext?.setShowMovies(true);
   };
 
   return (

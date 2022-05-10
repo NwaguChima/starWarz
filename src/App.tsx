@@ -6,7 +6,7 @@ import MovieList from "./components/movieList/MovieList";
 function App() {
   return (
     <div className={styles.App}>
-      <LandingPage />
+      {/* <LandingPage /> */}
       <MovieList />
     </div>
   );
