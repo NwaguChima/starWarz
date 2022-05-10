@@ -15,20 +15,12 @@ html {
     font-size: 55%;
   }
 
-  @media screen and (max-width: 1100px) {
+  @media screen and (max-width: 1000px) {
     font-size: 50%;
   }
 
-  @media screen and (max-width: 1000px) {
-    font-size: 58%;
-  }
-
-  @media screen and (max-width: 900px) {
-    font-size: 48%;
-  }
-
-  @media screen and (max-width: 450px) {
-    font-size: 35%;
+  @media screen and (max-width: 700px) {
+    font-size: 45%;
   }
 }
 

@@ -26,20 +26,22 @@ const MovieList: React.FC<MovieListProps> = () => {
   console.log("xxx", movies);
 
   return (
-    <div className={styles.movies}>
-      {movies?.map((movie) => (
-        <div className={styles.movies__card} key={movie.url}>
-          <h3 className={styles.movies__card__title}>
-            <span>TITLE: </span>
-            {movie.title}
-          </h3>
-          <p className={styles.movies__card__crawl}>
-            <span>DIRECTOR: </span>
-            {movie.director}
-          </p>
-        </div>
-      ))}
-    </div>
+    <>
+      <div className={styles.movies}>
+        {movies?.map((movie) => (
+          <div className={styles.movies__card} key={movie.url}>
+            <h3 className={styles.movies__card__title}>
+              <span>TITLE: </span>
+              {movie.title}
+            </h3>
+            <p className={styles.movies__card__crawl}>
+              <span>DIRECTOR: </span>
+              {movie.director}
+            </p>
+          </div>
+        ))}
+      </div>
+    </>
   );
 };
 

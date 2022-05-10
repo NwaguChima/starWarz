@@ -6,7 +6,6 @@
   gap: 3rem;
 
   &__card {
-    // background-color: whitesmoke;
     padding: 1.5rem;
     box-shadow: varr.$box_shadow;
     display: flex;
@@ -41,5 +40,13 @@
       -ms-transform: scale(1.1);
       -o-transform: scale(1.1);
     }
+  }
+
+  @media screen and (max-width: 799px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: 499px) {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
