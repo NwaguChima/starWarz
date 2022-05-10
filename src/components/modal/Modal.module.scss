@@ -1,0 +1,19 @@
+@use "../../globalStyles/variables.scss" as varr;
+
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+
+  &__container {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: #332b008c;
+  }
+}

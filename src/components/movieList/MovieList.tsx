@@ -27,8 +27,6 @@ const MovieList: React.FC<MovieListProps> = () => {
     movieList();
   }, []);
 
-  console.log("xxx", movies);
-
   if (error) {
     return <div className={styles.error}>{error}</div>;
   }
