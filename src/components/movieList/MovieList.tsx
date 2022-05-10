@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getMovies } from "../../utils/data";
 import { IMovies } from "../../utils/types";
+import Spinner from "../spinner/Spinner";
 import styles from "./MovieList.module.scss";
 
 interface MovieListProps {}
@@ -26,7 +27,7 @@ const MovieList: React.FC<MovieListProps> = () => {
     movieList();
   }, []);
 
-  console.log("xxx", error);
+  console.log("xxx", movies);
 
   if (error) {
     return <div className={styles.error}>{error}</div>;
@@ -34,6 +35,7 @@ const MovieList: React.FC<MovieListProps> = () => {
 
   return (
     <>
+      {loading && <Spinner />}
       <div className={styles.movies}>
         {movies?.map((movie) => (
           <div className={styles.movies__card} key={movie.url}>
@@ -44,6 +46,10 @@ const MovieList: React.FC<MovieListProps> = () => {
             <p className={styles.movies__card__crawl}>
               <span>DIRECTOR: </span>
               {movie.director}
+            </p>
+            <p className={styles.movies__card__crawl}>
+              <span>RELEASE DATE: </span>
+              {movie.release_date}
             </p>
           </div>
         ))}
