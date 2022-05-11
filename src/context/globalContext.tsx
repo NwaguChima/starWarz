@@ -12,8 +12,8 @@ type GlobalContextType = {
   setShowMovies: React.Dispatch<React.SetStateAction<boolean>>;
   showModal: boolean;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
-  movie: IMovies | {};
-  setMovie: React.Dispatch<React.SetStateAction<IMovies | {}>>;
+  movie: IMovies | undefined;
+  setMovie: React.Dispatch<React.SetStateAction<IMovies | undefined>>;
 };
 
 const GlobalContext = createContext<GlobalContextType | null>(null);
@@ -24,7 +24,7 @@ export const GlobalContextProvider = ({
   const [dropDown, setDropDown] = useState<boolean>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [showMovies, setShowMovies] = useState<boolean>(false);
-  const [movie, setMovie] = useState<IMovies | {}>({});
+  const [movie, setMovie] = useState<IMovies | undefined>();
 
   return (
     <GlobalContext.Provider

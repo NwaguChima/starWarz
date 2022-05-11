@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import GlobalContext from "../../context/globalContext";
 import { getMovies } from "../../utils/data";
 import { IMovies } from "../../utils/types";
 import Spinner from "../spinner/Spinner";
@@ -12,11 +13,12 @@ const MovieList: React.FC<MovieListProps> = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
 
+  const { setMovie, setShowModal } = useContext(GlobalContext)!;
+
   useEffect(() => {
     async function movieList() {
       try {
         const movieData = await getMovies();
-        // console.log(movieData);
         setLoading(false);
         setMovies(movieData);
       } catch (error: any) {
@@ -27,6 +29,11 @@ const MovieList: React.FC<MovieListProps> = () => {
     movieList();
   }, []);
 
+  const handleModal = (currentMovie: IMovies) => {
+    setShowModal(true);
+    setMovie(currentMovie);
+  };
+
   if (error) {
     return <div className={styles.error}>{error}</div>;
   }
@@ -36,7 +43,11 @@ const MovieList: React.FC<MovieListProps> = () => {
       {loading && <Spinner />}
       <div className={styles.movies}>
         {movies?.map((movie) => (
-          <div className={styles.movies__card} key={movie.url}>
+          <div
+            className={styles.movies__card}
+            key={movie.url}
+            onClick={() => handleModal(movie)}
+          >
             <h3 className={styles.movies__card__title}>
               <span>TITLE: </span>
               {movie.title}

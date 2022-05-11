@@ -14,18 +14,19 @@ export async function getMovies() {
   }
 }
 
-// export const getPokemonDetails = async (array: [IPokemon]) => {
-//   try {
-//     const response = array.map(async (item: IPokemon) => {
-//       return await (
-//         await axios.get(item.url)
-//       ).data;
-//     });
+export const getCharacters = async (array: string[]) => {
+  try {
+    const response = array.map(async (item: string) => {
+      return await (
+        await axios.get(item)
+      ).data;
+    });
 
-//     const data = await Promise.all(response);
+    const data = await Promise.all(response);
 
-//     return data;
-//   } catch (error: any) {
-//     return error.message;
-//   }
-// };
+    console.log("newly rendered", data);
+    return data;
+  } catch (error: any) {
+    return error;
+  }
+};
