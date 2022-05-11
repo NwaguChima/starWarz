@@ -17,6 +17,7 @@ export const Modal: React.FC<ModalProps> = () => {
     return ReactDOM.createPortal(
       <div className={styles.modal}>
         <div className={styles.modal__container} onClick={handleClose}></div>
+        <div className={styles.modal__box}>Hellooo</div>
         <MovieDetail />
       </div>,
       document.getElementById("modal__root")!

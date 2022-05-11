@@ -6,6 +6,9 @@
   bottom: 0;
   right: 0;
   left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &__container {
     position: fixed;
@@ -15,5 +18,14 @@
     right: 0;
     z-index: 100;
     background-color: #332b008c;
+  }
+
+  &__box {
+    position: relative;
+    background-color: rgb(180, 178, 178);
+    // background-color: black;
+    z-index: 100;
+    height: 80vh;
+    width: 70vw;
   }
 }

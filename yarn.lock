@@ -1962,6 +1962,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-table@^7.7.12":
+  version "7.7.12"
+  resolved "https://registry.yarnpkg.com/@types/react-table/-/react-table-7.7.12.tgz#628011d3cb695b07c678704a61f2f1d5b8e567fd"
+  integrity sha512-bRUent+NR/WwtDGwI/BqhZ8XnHghwHw0HUKeohzB5xN3K2qKWYE5w19e7GCuOkL1CXD9Gi1HFy7TIm2AvgWUHg==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*", "@types/react@^18.0.0":
   version "18.0.9"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.9.tgz#d6712a38bd6cd83469603e7359511126f122e878"
@@ -7939,6 +7946,11 @@ react-scroll@^1.8.7:
   dependencies:
     lodash.throttle "^4.1.1"
     prop-types "^15.7.2"
+
+react-table@^7.7.0:
+  version "7.7.0"
+  resolved "https://registry.yarnpkg.com/react-table/-/react-table-7.7.0.tgz#e2ce14d7fe3a559f7444e9ecfe8231ea8373f912"
+  integrity sha512-jBlj70iBwOTvvImsU9t01LjFjy4sXEtclBovl3mTiqjz23Reu0DKnRza4zlLtOPACx6j2/7MrQIthIK1Wi+LIA==
 
 react@^18.1.0:
   version "18.1.0"

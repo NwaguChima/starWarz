@@ -7,15 +7,15 @@ import styles from "./MovieDetail.module.scss";
 interface MovieDetailProps {}
 
 const MovieDetail: React.FC<MovieDetailProps> = () => {
-  const [characters, setCharacters] = useState<ICharacter[] | undefined>();
+  // const [characters, setCharacters] = useState<ICharacter[] | undefined>();
   const [error, setError] = useState("");
-  const { movie } = useContext(GlobalContext)!;
+  const { movie, setCharacters } = useContext(GlobalContext)!;
 
   useEffect(() => {
     async function fetchCharacters() {
       try {
         const data: ICharacter[] = await getCharacters(movie!.characters);
-        console.log(characters, "asmovee");
+        // console.log(characters, "asmovee");
         setCharacters(data);
       } catch (err: any) {
         setError(err.message);
@@ -25,9 +25,9 @@ const MovieDetail: React.FC<MovieDetailProps> = () => {
     // eslint-disable-next-line
   }, [movie]);
 
-  console.log("character: ", characters, "err: ", error);
+  console.log("err: ", error);
 
-  return <div className={styles.details}>Hello</div>;
+  return <div className={styles.details}></div>;
 };
 
 export default MovieDetail;

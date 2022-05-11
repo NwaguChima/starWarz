@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react";
-import { IMovies } from "../utils/types";
+import { ICharacter, IMovies } from "../utils/types";
 
 type GlobalContextProviderProps = {
   children: React.ReactNode;
@@ -14,6 +14,8 @@ type GlobalContextType = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   movie: IMovies | undefined;
   setMovie: React.Dispatch<React.SetStateAction<IMovies | undefined>>;
+  characters: ICharacter[] | undefined;
+  setCharacters: React.Dispatch<React.SetStateAction<ICharacter[] | undefined>>;
 };
 
 const GlobalContext = createContext<GlobalContextType | null>(null);
@@ -25,6 +27,7 @@ export const GlobalContextProvider = ({
   const [showModal, setShowModal] = useState<boolean>(false);
   const [showMovies, setShowMovies] = useState<boolean>(false);
   const [movie, setMovie] = useState<IMovies | undefined>();
+  const [characters, setCharacters] = useState<ICharacter[] | undefined>();
 
   return (
     <GlobalContext.Provider
@@ -37,6 +40,8 @@ export const GlobalContextProvider = ({
         setShowModal,
         movie,
         setMovie,
+        characters,
+        setCharacters,
       }}
     >
       {children}
