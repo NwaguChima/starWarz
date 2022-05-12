@@ -16,6 +16,8 @@ type GlobalContextType = {
   setMovie: React.Dispatch<React.SetStateAction<IMovies | undefined>>;
   characters: ICharacter[] | undefined;
   setCharacters: React.Dispatch<React.SetStateAction<ICharacter[] | undefined>>;
+  error: string;
+  setError: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const GlobalContext = createContext<GlobalContextType | null>(null);
@@ -28,6 +30,7 @@ export const GlobalContextProvider = ({
   const [showMovies, setShowMovies] = useState<boolean>(false);
   const [movie, setMovie] = useState<IMovies | undefined>();
   const [characters, setCharacters] = useState<ICharacter[] | undefined>();
+  const [error, setError] = useState<string>("");
 
   return (
     <GlobalContext.Provider
@@ -42,6 +45,8 @@ export const GlobalContextProvider = ({
         setMovie,
         characters,
         setCharacters,
+        error,
+        setError,
       }}
     >
       {children}

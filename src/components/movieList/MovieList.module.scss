@@ -11,7 +11,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    // align-items: center;
     gap: 1rem;
     cursor: pointer;
 
@@ -53,5 +52,11 @@
 }
 
 .error {
-  color: aquamarine;
+  min-width: 40rem;
+  min-height: 10rem;
+  background-color: whitesmoke;
+  color: varr.$main__backg;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

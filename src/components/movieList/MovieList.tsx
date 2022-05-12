@@ -4,10 +4,10 @@ import { getMovies } from "../../utils/data";
 import { IMovies } from "../../utils/types";
 import Spinner from "../spinner/Spinner";
 import styles from "./MovieList.module.scss";
+import { VscError } from "react-icons/vsc";
 
 interface MovieListProps {}
 
-// let
 const MovieList: React.FC<MovieListProps> = () => {
   const [movies, setMovies] = useState<IMovies[] | []>([]);
   const [error, setError] = useState("");
@@ -17,14 +17,15 @@ const MovieList: React.FC<MovieListProps> = () => {
 
   useEffect(() => {
     async function movieList() {
-      try {
-        const movieData = await getMovies();
+      const movieData = await getMovies();
+
+      if (movieData.message) {
         setLoading(false);
-        setMovies(movieData);
-      } catch (error: any) {
-        setLoading(false);
-        setError(error.message);
+        setError(movieData.message);
       }
+
+      setLoading(false);
+      setMovies(movieData);
     }
     movieList();
   }, []);
@@ -35,33 +36,41 @@ const MovieList: React.FC<MovieListProps> = () => {
   };
 
   if (error) {
-    return <div className={styles.error}>{error}</div>;
+    return (
+      <div className={styles.error}>
+        <p>{error}</p>
+        <i>
+          <VscError />
+        </i>
+      </div>
+    );
   }
 
   return (
     <>
       {loading && <Spinner />}
       <div className={styles.movies}>
-        {movies?.map((movie) => (
-          <div
-            className={styles.movies__card}
-            key={movie.url}
-            onClick={() => handleModal(movie)}
-          >
-            <h3 className={styles.movies__card__title}>
-              <span>TITLE: </span>
-              {movie.title}
-            </h3>
-            <p className={styles.movies__card__crawl}>
-              <span>DIRECTOR: </span>
-              {movie.director}
-            </p>
-            <p className={styles.movies__card__crawl}>
-              <span>RELEASE DATE: </span>
-              {movie.release_date}
-            </p>
-          </div>
-        ))}
+        {movies.length > 0 &&
+          movies?.map((movie) => (
+            <div
+              className={styles.movies__card}
+              key={movie.url}
+              onClick={() => handleModal(movie)}
+            >
+              <h3 className={styles.movies__card__title}>
+                <span>TITLE: </span>
+                {movie.title}
+              </h3>
+              <p className={styles.movies__card__crawl}>
+                <span>DIRECTOR: </span>
+                {movie.director}
+              </p>
+              <p className={styles.movies__card__crawl}>
+                <span>RELEASE DATE: </span>
+                {movie.release_date}
+              </p>
+            </div>
+          ))}
       </div>
     </>
   );

@@ -1,5 +1,6 @@
 import React, { useContext, lazy, Suspense } from "react";
 import ReactDOM from "react-dom";
+import { VscError } from "react-icons/vsc";
 import GlobalContext from "../../context/globalContext";
 import MovieDetail from "../MovieDetail/MovieDetail";
 import Spinner from "../spinner/Spinner";
@@ -20,10 +21,24 @@ export const Modal: React.FC<ModalProps> = () => {
     return ReactDOM.createPortal(
       <div className={styles.modal}>
         <div className={styles.modal__container} onClick={handleClose}></div>
-        <div className={styles.modal__box}>
-          <Suspense fallback={<p>Loading...</p>}>
-            {context.characters ? <Table /> : <Spinner />}
-          </Suspense>
+        <div
+          className={`${styles.modal__box} ${
+            context.showModal ? styles.moveIn : styles.moveOut
+          }`}
+        >
+          <h3>CHARACTERS</h3>
+          {context.error ? (
+            <div className={styles.error}>
+              <p>{context.error}</p>
+              <i>
+                <VscError />
+              </i>
+            </div>
+          ) : (
+            <Suspense fallback={<p>Loading...</p>}>
+              {context.characters ? <Table /> : <Spinner />}
+            </Suspense>
+          )}
         </div>
         <MovieDetail />
       </div>,

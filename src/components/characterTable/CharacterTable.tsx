@@ -1,27 +1,14 @@
-import React, { useContext, useEffect, useMemo, useState } from "react";
-import { useTable, useSortBy, useGlobalFilter, useFilters } from "react-table";
+import React, { useContext, useMemo } from "react";
+import { useTable, useSortBy, useFilters } from "react-table";
 import GlobalContext from "../../context/globalContext";
 import { COLUMNS } from "./columns";
 import "./characterTable.module.scss";
-import { ICharacter } from "../../utils/types";
 import { computeHeight } from "../../utils/helper";
 
 interface CharacterTableProps {}
 
 const CharacterTable: React.FC<CharacterTableProps> = () => {
-  const [heightSum, setHeightSum] = useState(0);
   const { characters } = useContext(GlobalContext)!;
-
-  useEffect(() => {
-    // characters &&
-    //   setHeightSum(
-    //     characters?.reduce((sum: number, cur) => {
-    //       if (cur.height !== "unknown") {
-    //         return sum + +cur.height;
-    //       } else return sum;
-    //     }, 0)
-    //   );
-  }, [characters]);
 
   const columns = useMemo(() => COLUMNS, []);
   const data: any = useMemo(() => characters, [characters]);
@@ -31,7 +18,6 @@ const CharacterTable: React.FC<CharacterTableProps> = () => {
       {
         columns,
         data,
-        // stateReducer
       },
       useFilters,
       useSortBy

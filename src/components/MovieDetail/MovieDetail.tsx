@@ -1,24 +1,20 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import GlobalContext from "../../context/globalContext";
 import { getCharacters } from "../../utils/data";
-import { ICharacter } from "../../utils/types";
 import styles from "./MovieDetail.module.scss";
 
 interface MovieDetailProps {}
 
 const MovieDetail: React.FC<MovieDetailProps> = () => {
-  // const [characters, setCharacters] = useState<ICharacter[] | undefined>();
-  const [error, setError] = useState("");
-  const { movie, setCharacters } = useContext(GlobalContext)!;
+  const { movie, setCharacters, setError } = useContext(GlobalContext)!;
 
   useEffect(() => {
     async function fetchCharacters() {
-      try {
-        const data: ICharacter[] = await getCharacters(movie!.characters);
-        setCharacters(data);
-      } catch (err: any) {
-        setError(err.message);
+      const data = await getCharacters(movie!.characters);
+      if (data.message) {
+        setError(data.message);
       }
+      setCharacters(data);
     }
     fetchCharacters();
     // eslint-disable-next-line

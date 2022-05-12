@@ -1,6 +1,5 @@
 import axios from "axios";
 import { IMovies } from "./types";
-import { FaCode } from "react-icons/fa";
 
 // http://anyorigin.com/go?url=https://swapi.dev/api/films
 export async function getMovies() {
@@ -41,7 +40,6 @@ export const getCharacters = async (array: string[]) => {
       }
       return ch;
     });
-    console.log("newly rendered", data);
     return data;
   } catch (error: any) {
     return error;
