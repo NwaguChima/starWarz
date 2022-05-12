@@ -1,6 +1,7 @@
 import axios from "axios";
 import { IMovies } from "./types";
 
+// http://anyorigin.com/go?url=https://swapi.dev/api/films
 export async function getMovies() {
   try {
     const { data } = await axios.get("https://swapi.dev/api/films");

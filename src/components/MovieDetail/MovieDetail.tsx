@@ -15,7 +15,6 @@ const MovieDetail: React.FC<MovieDetailProps> = () => {
     async function fetchCharacters() {
       try {
         const data: ICharacter[] = await getCharacters(movie!.characters);
-        // console.log(characters, "asmovee");
         setCharacters(data);
       } catch (err: any) {
         setError(err.message);
@@ -24,8 +23,6 @@ const MovieDetail: React.FC<MovieDetailProps> = () => {
     fetchCharacters();
     // eslint-disable-next-line
   }, [movie]);
-
-  console.log("err: ", error);
 
   return <div className={styles.details}></div>;
 };
