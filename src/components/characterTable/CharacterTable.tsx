@@ -4,6 +4,7 @@ import GlobalContext from "../../context/globalContext";
 import { COLUMNS } from "./columns";
 import "./characterTable.module.scss";
 import { ICharacter } from "../../utils/types";
+import { computeHeight } from "../../utils/helper";
 
 interface CharacterTableProps {}
 
@@ -60,13 +61,6 @@ const CharacterTable: React.FC<CharacterTableProps> = () => {
           return (
             <tr {...row.getRowProps()}>
               {row.cells.map((cell) => {
-                console.log("one..", rows);
-                // const totalHeight = rows?.reduce((sum: number, cur) => {
-                //   if (cur.values.height !== "unknown") {
-                //     return sum + +cur.values.height;
-                //   } else return sum;
-                // }, 0);
-                // console.log("two..", totalHeight);
                 return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
               })}
             </tr>
@@ -78,8 +72,12 @@ const CharacterTable: React.FC<CharacterTableProps> = () => {
           <td>Total: {rows.length}</td>
           <td></td>
           <td>
-            {heightSum} cm ({(heightSum / 30.48).toFixed(2).split(".")[0]}ft/
-            {(+(heightSum / 30.48).toFixed(2).split(".")[1] / 12).toFixed(2)}in)
+            {computeHeight(rows)} cm (
+            {(computeHeight(rows) / 30.48).toFixed(2).split(".")[0]}ft/
+            {(
+              +(computeHeight(rows) / 30.48).toFixed(2).split(".")[1] / 12
+            ).toFixed(2)}
+            in)
           </td>
         </tr>
       </tfoot>

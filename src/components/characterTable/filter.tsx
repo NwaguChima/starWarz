@@ -5,16 +5,23 @@ export const SelectColumnFilter: React.FC<any> = ({
 }) => {
   return (
     <select
-      style={{ borderInline: "none", marginTop: "5px" }}
+      style={{
+        borderInline: "none",
+        position: "absolute",
+        top: "35px",
+        left: "15px",
+        width: "10rem",
+        marginTop: "5px",
+      }}
       value={filterValue}
       onChange={(e) => {
         setFilter(e.target.value || undefined);
       }}
     >
-      <option value="">all</option>
-      <option value="M">male</option>
-      <option value="F">female</option>
-      <option value="n/a">humanoids</option>
+      <option value="">All</option>
+      <option value="M">Male</option>
+      <option value="F">Female</option>
+      <option value="n/a">Humanoids</option>
     </select>
   );
 };

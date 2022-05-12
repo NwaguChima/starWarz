@@ -33,11 +33,11 @@ export const getCharacters = async (array: string[]) => {
         ch.gender = "F";
       }
       if (ch.gender === "hermaphrodite") {
-        ch.gender = "n/a";
+        ch.gender = "h/m";
       }
 
       if (ch.gender === "none") {
-        ch.gender = "n/a";
+        ch.gender = "h/m";
       }
       return ch;
     });

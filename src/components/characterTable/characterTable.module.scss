@@ -10,6 +10,7 @@ table td,
 table th {
   border: 1px solid varr.$main__backg;
   padding: 8px;
+  text-align: center;
 }
 
 table tr {
@@ -33,8 +34,14 @@ table tr:hover {
 table th,
 tfoot td {
   padding-top: 12px;
-  padding-bottom: 12px;
+  padding-bottom: 30px;
+  min-width: 12rem;
+  position: relative;
   text-align: center;
   background-color: varr.$main__backg;
   color: varr.$main__yellow;
+}
+
+tfoot td {
+  padding-bottom: 15px;
 }
