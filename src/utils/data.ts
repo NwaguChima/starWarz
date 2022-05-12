@@ -1,5 +1,6 @@
 import axios from "axios";
 import { IMovies } from "./types";
+import { FaCode } from "react-icons/fa";
 
 // http://anyorigin.com/go?url=https://swapi.dev/api/films
 export async function getMovies() {
@@ -23,8 +24,23 @@ export const getCharacters = async (array: string[]) => {
       ).data;
     });
 
-    const data = await Promise.all(response);
+    let data = await Promise.all(response);
+    data = data.map((ch) => {
+      if (ch.gender === "male") {
+        ch.gender = "M";
+      }
+      if (ch.gender === "female") {
+        ch.gender = "F";
+      }
+      if (ch.gender === "hermaphrodite") {
+        ch.gender = "n/a";
+      }
 
+      if (ch.gender === "none") {
+        ch.gender = "n/a";
+      }
+      return ch;
+    });
     console.log("newly rendered", data);
     return data;
   } catch (error: any) {

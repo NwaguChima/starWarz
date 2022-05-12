@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useMemo, useState } from "react";
-import { useTable } from "react-table";
+import { useTable, useSortBy, useGlobalFilter } from "react-table";
 import GlobalContext from "../../context/globalContext";
 import { COLUMNS } from "./columns";
 import "./characterTable.module.scss";
@@ -26,10 +26,15 @@ const CharacterTable: React.FC<CharacterTableProps> = () => {
   const data: any = useMemo(() => characters, [characters]);
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({
-      columns,
-      data,
-    });
+    useTable(
+      {
+        columns,
+        data,
+        // stateReducer
+      },
+      useGlobalFilter,
+      useSortBy
+    );
 
   return (
     <table {...getTableProps()}>
@@ -37,7 +42,12 @@ const CharacterTable: React.FC<CharacterTableProps> = () => {
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
-              <th {...column.getHeaderProps()}>{column.render("Header")}</th>
+              <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                {column.render("Header")}
+                <span>
+                  {column.isSorted ? (column.isSortedDesc ? " 🔽" : " 🔼") : ""}
+                </span>
+              </th>
             ))}
           </tr>
         ))}
@@ -49,14 +59,15 @@ const CharacterTable: React.FC<CharacterTableProps> = () => {
           return (
             <tr {...row.getRowProps()}>
               {row.cells.map((cell) => {
-                if (cell.row.original.gender === "male") {
-                  cell.row.original.gender = "M";
+                console.log("one..", cell.value);
+                if (cell.value === "male") {
+                  cell.value = "M";
                 }
-                if (cell.row.original.gender === "female") {
-                  cell.row.original.gender = "F";
+                if (cell.value === "female") {
+                  cell.value = "F";
                 }
-                if (cell.row.original.gender === "hermaphrodite") {
-                  cell.row.original.gender = "n/a";
+                if (cell.value === "hermaphrodite") {
+                  cell.value = "n/a";
                 }
                 return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
               })}
