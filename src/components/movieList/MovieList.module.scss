@@ -70,7 +70,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
+    position: fixed;
     width: 20rem;
     background-color: varr.$main__yellow;
     bottom: 0;
@@ -113,6 +113,13 @@
         -o-transform: scale(1.2);
       }
     }
+  }
+
+  @media screen and (max-width: 499px) {
+    height: auto;
+    overflow: scroll;
+    padding-top: 10rem;
+    padding-bottom: 7rem;
   }
 }
 
