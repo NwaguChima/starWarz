@@ -39,6 +39,22 @@
       -moz-transform: scale(1.1);
       -ms-transform: scale(1.1);
       -o-transform: scale(1.1);
+
+      span {
+        visibility: visible;
+      }
+    }
+
+    &__marquee {
+      width: 25rem;
+      white-space: nowrap;
+      overflow: hidden;
+
+      span {
+        display: inline-block;
+        padding-left: 100%;
+        visibility: hidden;
+      }
     }
   }
 
@@ -108,4 +124,27 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.scroll {
+  animation: sc 40s infinite linear;
+  -webkit-animation: sc 40s infinite linear;
+
+  @keyframes sc {
+    0% {
+      transform: translate(0, 0);
+      -webkit-transform: translate(0, 0);
+      -moz-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+      -o-transform: translate(0, 0);
+    }
+
+    100% {
+      transform: translate(-100%, 0);
+      -webkit-transform: translate(-100%, 0);
+      -moz-transform: translate(-100%, 0);
+      -ms-transform: translate(-100%, 0);
+      -o-transform: translate(-100%, 0);
+    }
+  }
 }

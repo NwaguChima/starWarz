@@ -74,6 +74,9 @@ const MovieList: React.FC<MovieListProps> = () => {
                 <span>RELEASE DATE: </span>
                 {movie.release_date}
               </p>
+              <p className={styles.movies__card__marquee}>
+                <span className={styles.scroll}>{movie.opening_crawl}</span>
+              </p>
             </div>
           ))}
         <div className={styles.movies__back} onClick={handleBack}>
