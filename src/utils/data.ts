@@ -7,7 +7,7 @@ export async function getMovies() {
     const { data } = await axios.get("https://swapi.dev/api/films");
 
     let res: IMovies[] = data.results;
-    res.sort((a, b) => +new Date(b.release_date) - +new Date(a.release_date));
+    res.sort((a, b) => +new Date(a.release_date) - +new Date(b.release_date));
 
     return res;
   } catch (error: any) {

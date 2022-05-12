@@ -5,6 +5,7 @@ import { IMovies } from "../../utils/types";
 import Spinner from "../spinner/Spinner";
 import styles from "./MovieList.module.scss";
 import { VscError } from "react-icons/vsc";
+import { BiArrowBack } from "react-icons/bi";
 
 interface MovieListProps {}
 
@@ -13,7 +14,7 @@ const MovieList: React.FC<MovieListProps> = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
 
-  const { setMovie, setShowModal } = useContext(GlobalContext)!;
+  const { setMovie, setShowModal, setShowMovies } = useContext(GlobalContext)!;
 
   useEffect(() => {
     async function movieList() {
@@ -33,6 +34,10 @@ const MovieList: React.FC<MovieListProps> = () => {
   const handleModal = (currentMovie: IMovies) => {
     setShowModal(true);
     setMovie(currentMovie);
+  };
+
+  const handleBack = () => {
+    setShowMovies(false);
   };
 
   if (error) {
@@ -71,6 +76,12 @@ const MovieList: React.FC<MovieListProps> = () => {
               </p>
             </div>
           ))}
+        <div className={styles.movies__back} onClick={handleBack}>
+          <button>Back Home</button>
+          <i>
+            <BiArrowBack />
+          </i>
+        </div>
       </div>
     </>
   );
