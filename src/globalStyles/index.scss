@@ -32,33 +32,3 @@ body {
   background-color: varr.$main__backg;
   font-size: varr.$main_font;
 }
-
-.right__list {
-  list-style: none;
-
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  text-decoration: none;
-  line-height: 1.5;
-  padding: varr.$padding_links;
-  width: 100%;
-  border-top: 0.5px solid rgba(153, 153, 153, 0.123);
-  border-bottom: 0.1px solid rgba(153, 153, 153, 0.123);
-}
-
-.right__list:hover,
-.right__list:active {
-  background-color: varr.$white_bg;
-  color: varr.$main_blue;
-}
-
-a {
-  text-decoration: none;
-  color: #555;
-  font-weight: 400;
-}
-
-li {
-  list-style: none;
-}
