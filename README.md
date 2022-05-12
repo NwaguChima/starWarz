@@ -4,7 +4,7 @@ Context API was used to transfer logic between compoenents. TypeScript was used 
 
 ## Trouble with the task;
 
-The API is very slow and sometimes requests are blocked by cors. Using anyorigin.com to bypass that doesnt work anymore.
+The API is very slow and sometimes requests are blocked by cors. Using anyorigin.com to bypass that doesnt work anymore. I also wrote some tests, but had little time to write test for all components.
 
 ## Available Scripts
 
